@@ -21,7 +21,6 @@ class Habit(models.Model):
     time_to_complete = models.PositiveIntegerField(verbose_name='Время на выполнение')  # время, которое
     # предположительно потратит пользователь на выполнение привычки
     is_public = models.BooleanField(default=False, verbose_name='Признак публичности')  # привычки можно публиковать в
-
     # общий доступ, чтобы другие пользователи могли брать в пример чужие привычки
 
     def __str__(self):
