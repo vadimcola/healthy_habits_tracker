@@ -24,6 +24,9 @@ class Habit(models.Model):
 
     # общий доступ, чтобы другие пользователи могли брать в пример чужие привычки
 
+    def __str__(self):
+        return f'{self.action}'
+
     class Meta:
         verbose_name = 'Привычка'
         verbose_name_plural = 'Привычки'
