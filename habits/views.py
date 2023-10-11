@@ -54,4 +54,3 @@ class HabitPublicList(generics.ListAPIView):
     """Просмотр списка публичных привычек"""
     queryset = Habit.objects.filter(is_public=True)
     serializer_class = HabitSerializer
-    pagination_class = HabitPaginator
