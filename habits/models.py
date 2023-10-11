@@ -5,7 +5,7 @@ from users.models import NULLABLE
 
 
 class Habit(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE,
                              verbose_name='Пользователь')  # создатель привычки
     place = models.CharField(max_length=255, verbose_name='Место')  # место, в котором необходимо выполнять привычку
     time = models.TimeField(verbose_name='Время')  # время, когда необходимо выполнять привычку
