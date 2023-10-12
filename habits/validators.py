@@ -12,9 +12,7 @@ def validate_period(value):
         raise serializers.ValidationError('Привычка не может быть выполнена реже, чем 1 раз в 7 дней!')
 
 
-def validate_related_habit(value):
-    if value and not value.is_pleasant:
-        raise serializers.ValidationError('Связанная привычка должна быть приятной!')
+
 
 
 

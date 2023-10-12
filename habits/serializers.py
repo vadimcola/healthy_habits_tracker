@@ -1,15 +1,13 @@
 from rest_framework import serializers
 
 from habits.models import Habit
-from habits.validators import validate_time_to_complete, validate_period, validate_related_habit
+from habits.validators import validate_time_to_complete, validate_period
 
 
 class HabitSerializer(serializers.ModelSerializer):
     time_to_complete = serializers.IntegerField(validators=[validate_time_to_complete])
     period = serializers.IntegerField(validators=[validate_period])
-    related_habit = serializers.PrimaryKeyRelatedField(queryset=Habit.objects.all(),
-                                                       validators=[validate_related_habit],
-                                                       required=False)
+
 
     class Meta:
         model = Habit
@@ -24,4 +22,7 @@ class HabitSerializer(serializers.ModelSerializer):
         elif is_pleasant and (reward is not None or related_habit is not None):
             raise serializers.ValidationError(
                 "У приятной привычки не может быть вознаграждения или связанной привычки!")
+        elif related_habit and not related_habit.is_pleasant:
+            raise serializers.ValidationError(
+                'Связанная привычка должна быть приятной!')
         return data
