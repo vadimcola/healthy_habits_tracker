@@ -40,10 +40,10 @@ class HabitTest(APITestCase):
             "related_habit": None
         }
         response = self.client.post(reverse('habits:create'), data_habit, format='json')
-        print(response.json())
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_habit_detail(self):
+        """Тест на просмотр привычки"""
         response = self.client.get(reverse('habits:detail', args=[self.habit.pk]), )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -61,10 +61,12 @@ class HabitTest(APITestCase):
             "related_habit": None})
 
     def test_habit_delete(self):
+        """Тест на удаление привычки"""
         response = self.client.delete(reverse('habits:delete', args=[self.habit.pk]))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_habit_update(self):
+        """Тест на обновление привычки """
         data = {
             "place": "Тест измененный",
             "reward": "Тест измененный"
@@ -87,6 +89,7 @@ class HabitTest(APITestCase):
             "related_habit": None})
 
     def test_habits_list(self):
+        """Тест на просмотр списка привычек"""
         response = self.client.get(reverse('habits:list'), )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
