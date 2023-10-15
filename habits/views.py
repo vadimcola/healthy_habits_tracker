@@ -5,6 +5,7 @@ from habits.paginators import HabitPaginator
 from habits.serializers import HabitSerializer
 
 
+
 class MixinQueryset:
 
     def get_queryset(self):

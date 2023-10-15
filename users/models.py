@@ -36,7 +36,7 @@ class CustomUserManager(UserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, verbose_name='Почта')
-    telegram_name = models.CharField(max_length=150, verbose_name='Имя пользователя', **NULLABLE)
+    telegram_name = models.CharField(max_length=150, verbose_name='Имя пользователя в Телеграмм', **NULLABLE)
     phone = models.CharField(max_length=35, verbose_name='Телефон', **NULLABLE)
 
     is_active = models.BooleanField(default=True,
