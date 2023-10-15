@@ -35,5 +35,3 @@ def send_tg():
                 "text": message,
             }
             return requests.get(url, params=params)
-
-

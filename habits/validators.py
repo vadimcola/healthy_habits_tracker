@@ -1,4 +1,3 @@
-from rest_framework.exceptions import ValidationError
 from rest_framework import serializers
 
 
@@ -10,9 +9,3 @@ def validate_time_to_complete(value):
 def validate_period(value):
     if value > 7:
         raise serializers.ValidationError('Привычка не может быть выполнена реже, чем 1 раз в 7 дней!')
-
-
-
-
-
-
